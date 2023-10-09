@@ -1,0 +1,30 @@
+CREATE DATABASE person_cost;
+USE person_cost;
+
+CREATE TABLE person (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    birthplace VARCHAR(100)
+);
+
+CREATE TABLE cost (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    location VARCHAR(100),
+    amount DOUBLE,
+    person_id INT,
+    FOREIGN KEY (person_id) REFERENCES person(id)
+);
+
+INSERT INTO person (name, birthplace) VALUES
+('Kiss Jóska', 'Nyíregyháza'),
+('Nagy Zsuzsanna', 'Budapest'),
+('Barna Károly', 'Debrecen'),
+('Leonard Bernstein', 'Chicago'),
+('Mandula Éva', 'Mátészalka');
+
+INSERT INTO cost (location, amount, person_id) VALUES
+('Grocery Store', 100.50, 1),
+('Restaurant', 45.75, 2),
+('Online Shopping', 200.20, 3),
+('Coffee Shop', 10.25, 4),
+('Gas Station', 50.00, 5);
